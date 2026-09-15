@@ -4,8 +4,10 @@ import { Outlet } from "react-router-dom";
 function RootLayout() {
   return (
     <>
-      <Header />
-      <Outlet />
+      <div className="min-h-screen">
+        <Header />
+        <Outlet />
+      </div>
       <div>Footer</div>
     </>
   );
