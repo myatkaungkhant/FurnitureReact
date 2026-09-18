@@ -1,16 +1,16 @@
+import { useState, useEffect } from "react";
 import type { MainNavItem } from "@/types";
 import { icons } from "../icons";
 import { siteConfig } from "@/config/site";
 import { Button } from "@/components/ui/button";
-import { HomeIcon } from "@radix-ui/react-icons";
 import {
   Sheet,
   SheetClose,
   SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
+  // SheetDescription,
+  // SheetFooter,
+  // SheetHeader,
+  // SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import {
@@ -25,10 +25,29 @@ interface MainNavigationProps {
 }
 
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Icon } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function MobileNavigation({ items }: MainNavigationProps) {
+  const [isDesktop, setIsDesktop] = useState(false);
+  const query = "(min-width: 1024px)";
+
+  useEffect(() => {
+    function onchange(event: MediaQueryListEvent) {
+      setIsDesktop(event.matches);
+    }
+
+    const result = matchMedia(query);
+    result.addEventListener("change", onchange);
+
+    return () => {
+      result.removeEventListener("change", onchange);
+    };
+  }, [query]);
+
+  if (isDesktop) {
+    return null;
+  }
+
   return (
     <>
       <div className="lg:hidden">
