@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { siteConfig } from "@/config/site";
 import { icons } from "../icons";
+import NewsLetterForm from "../news-letter";
 
 function Footer() {
   return (
@@ -17,17 +18,28 @@ function Footer() {
 
           <section className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-10">
             {siteConfig.footerNav.map((footerItem) => (
-              <div className="" key={footerItem.title}>
-                <h4 className="font-semibold">{footerItem.title}</h4>
+              <div className="space-y-3" key={footerItem.title}>
+                <h4 className="font-medium">{footerItem.title}</h4>
                 <ul className="">
                   {footerItem.items.map((item) => (
                     <li className="" key={item.title}>
-                      <Link to={item.href}>{item.title}</Link>
+                      <Link
+                        to={item.href}
+                        target={item.external ? "_blank" : undefined}
+                        className="text-sm text-muted-foreground hover:text-foreground"
+                      >
+                        {item.title}
+                        <span className="sr-only">{item.title}</span>
+                      </Link>
                     </li>
                   ))}
                 </ul>
               </div>
             ))}
+          </section>
+          <section className="space-y-3">
+            <h4 className="font-medium">Subscribe to our newsletter</h4>
+            <NewsLetterForm />
           </section>
         </section>
       </div>
