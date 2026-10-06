@@ -2,6 +2,7 @@ import {
   HamburgerMenuIcon,
   HomeIcon,
   PaperPlaneIcon,
+  ExclamationTriangleIcon,
 } from "@radix-ui/react-icons";
 import type React from "react";
 
@@ -27,4 +28,5 @@ export const icons = {
   home: HomeIcon,
   menu: HamburgerMenuIcon,
   paperPlane: PaperPlaneIcon,
+  exclamation: ExclamationTriangleIcon,
 };
